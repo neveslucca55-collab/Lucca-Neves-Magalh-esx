@@ -1,58 +1,305 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset e Variáveis de Cores */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-    <p>
-      Sou estudante de Ciência da Computação focado em criar
-      projetos modernos, funcionais e visualmente profissionais.
-      Atualmente estudo desenvolvimento web, GitHub e design de interfaces.
-    </p>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-secondary: #a855f7; /* Purple */
+        }
 
-  </section>
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-  <section class="projetos" id="projetos">
+        /* Navbar Sutil */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            width: 100%;
+        }
 
-    <h2>Projetos</h2>
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            background: linear-gradient(to right, #fff, var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    <div class="cards">
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 5% 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-      <div class="card">
-        <span>💻</span>
-        <h3>Portfólio Premium</h3>
-        <p>Projeto pessoal moderno utilizando HTML, CSS e JavaScript.</p>
-      </div>
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
 
-      <div class="card">
-        <span>⚡</span>
-        <h3>Landing Page</h3>
-        <p>Página responsiva com design profissional.</p>
-      </div>
+        /* Badge Estilo Startup */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            color: #818cf8;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
 
-      <div class="card">
-        <span>🚀</span>
-        <h3>Sistema Web</h3>
-        <p>Projeto acadêmico utilizando lógica e estrutura web.</p>
-      </div>
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
 
-    </div>
+        .hero h1 span {
+            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-  </section>
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
 
-  <section class="contato" id="contato">
+        /* Botões Modernos */
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+        }
 
-    <h2>Contato</h2>
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
 
-    <div class="contato-box">
-      <p>📧 Email: lucca@email.com</p>
-      <p>🐙 GitHub: github.com/lucca</p>
-      <p>💼 LinkedIn: linkedin.com/in/lucca</p>
-    </div>
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
 
-  </section>
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(99, 102, 241, 0.4);
+        }
 
-  <footer>
-    <p>© 2026 • Desenvolvido por Lucca Neves</p>
-  </footer>
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+        }
 
-  <script src="script.js"></script>
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* EFEITO GLASSMORPHISM & CARTÕES FLUTUANTES */
+        .hero-visual {
+            position: relative;
+            width: 500px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Esfera de Luz de Fundo (Glow Effect) */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            filter: blur(80px);
+            opacity: 0.3;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Cartão Flutuante Principal */
+        .glass-card {
+            position: relative;
+            z-index: 2;
+            width: 380px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Elemento decorativo menor para reforçar a flutuação */
+        .mini-card {
+            position: absolute;
+            z-index: 3;
+            bottom: -20px;
+            right: -20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: float-reverse 5s ease-in-out infinite;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #10b981; /* Verde Online */
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        .glass-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .glass-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animações Suaves de Flutuação */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Responsividade para Celular */
+        @media (max-width: 968px) {
+            nav { padding: 1.5rem 5%; }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 2rem;
+                gap: 4rem;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .cta-group { justify-content: center; }
+            .hero-visual { width: 100%; height: auto; }
+            .glass-card { width: 100%; max-width: 360px; margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">seu.nome()</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                ✨ Disponível para novos projetos
+            </div>
+            
+            <h1>Criando experiências digitais <span>memoráveis</span></h1>
+            
+            <p>Desenvolvedor Front-End & UI Designer focado em transformar ideias complexas em interfaces limpas, rápidas e visualmente impressionantes.</p>
+            
+            <div class="cta-group">
+                <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+                <a href="#contato" class="btn btn-secondary">Vamos conversar</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="glow"></div>
+            
+            <div class="glass-card">
+                <h3>UI Design & Code</h3>
+                <p>Design minimalista combinado com performance excepcional para o seu negócio.</p>
+                
+                <div class="tech-tags">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Tailwind</span>
+                    <span class="tech-tag">Figma</span>
+                </div>
+            </div>
+
+            <div class="mini-card">
+                <span class="dot"></span>
+                <span style="font-size: 0.85rem; font-weight: 500;">Status: Online</span>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
 <!-- deploy fix -->
