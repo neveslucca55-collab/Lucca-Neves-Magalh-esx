@@ -3,431 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateus Melo | Tech Portfolio</title>
-
+    <title>Lucca Neves | Portfólio Hub</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        :root {
-            --bg-main: #060b19;
-            --blue-electric: #00e5ff;
-            --blue-brand: #0052ff;
-            --border-color: rgba(255, 255, 255, 0.06);
-            --text-white: #ffffff;
-            --text-muted: #8a99ad;
-        }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-white);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .main-header {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            position: relative;
-            z-index: 10;
-        }
-
-        .user-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .location-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--blue-electric);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--blue-electric);
-        }
-
-        .wrapper {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 3rem 5% 6rem 5%;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 5rem;
-            position: relative;
-            z-index: 5;
-        }
-
-        .intro-block {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .pill-badge {
-            align-self: flex-start;
-            background: rgba(0, 82, 255, 0.1);
-            border: 1px solid rgba(0, 82, 255, 0.2);
-            color: #4c82ff;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 2rem;
-        }
-
-        .intro-block h1 {
-            font-size: 3.8rem;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -1.5px;
-            margin-bottom: 2rem;
-        }
-
-        .highlight-blue {
-            background: linear-gradient(120deg, #fff 40%, var(--blue-electric) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .description {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            line-height: 1.7;
-            margin-bottom: 3rem;
-        }
-
-        .description strong {
-            color: var(--text-white);
-        }
-
-        .action-row {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .btn-action {
-            padding: 1.1rem 2.2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            text-align: center;
-        }
-
-        .btn-main {
-            background: var(--blue-brand);
-            color: var(--text-white);
-            box-shadow: 0 4px 20px rgba(0, 82, 255, 0.3);
-        }
-
-        .btn-main:hover {
-            background: #0044d6;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(0, 82, 255, 0.45);
-        }
-
-        .btn-outline {
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--text-white);
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .connect-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            justify-content: center;
-        }
-
-        .connect-box {
-            background: rgba(10, 20, 44, 0.4);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-            text-decoration: none;
-            color: var(--text-white);
-            transition: all 0.3s ease;
-        }
-
-        .connect-box:hover {
-            background: rgba(10, 20, 44, 0.8);
-            border-color: var(--blue-brand);
-            box-shadow: inset 0 0 15px rgba(0, 82, 255, 0.1);
-        }
-
-        .box-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .box-category {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--blue-electric);
-        }
-
-        .arrow-diagonal {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .connect-box:hover .arrow-diagonal {
-            transform: translate(3px, -3px);
-            color: var(--blue-electric);
-        }
-
-        .connect-box h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .connect-box p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        @media (max-width: 968px) {
-            .wrapper {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-                padding-top: 1rem;
-            }
-
-            .main-header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .intro-block h1 {
-                font-size: 2.8rem;
-            }
-
-            .action-row {
-                flex-direction: column;
-            }
-        }
-
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="grid-overlay"></div>
+    <div class="bg-glow"></div>
 
-    <header class="main-header">
-        <div class="user-meta">
-            <span class="location-dot"></span> Lago Norte, DF
-        </div>
+    <nav>
+        <div class="logo">LUCCA<span>.NEVES</span></div>
+        <div class="nav-badge">1º Período • CEUB</div>
+    </nav>
 
-        <div class="current-status">
-            1º Período • Ciência da Computação
-        </div>
-    </header>
-
-    <main class="wrapper">
-
-        <section class="intro-block">
-
-            <div class="pill-badge">
-                🚀 Desenvolvimento & Engenharia
-            </div>
-
-            <h1>
-                Mateus Melo<br>
-                <span class="highlight-blue">
-                    Santiago Dias
-                </span>
-            </h1>
-
-            <p class="description">
-                Acadêmico no ambiente universitário e atualmente imerso na construção de soluções reais através de projetos intensivos de <strong>Bootcamp</strong>. Focado em arquitetura de software limpa e lógica avançada.
-            </p>
-
-            <div class="action-row">
-
-                <a href="https://wa.me/5561981638835"
-                   target="_blank"
-                   class="btn-action btn-main">
-                    Conectar via WhatsApp
+    <main class="container">
+        <section class="hero">
+            <div class="badge">🚀 BOOTCAMP EM ANDAMENTO</div>
+            <h1>Ciência da <br><span class="gradient-text">Computação</span></h1>
+            <p>Olá, eu sou o <strong>Lucca Neves Magalhães</strong>. Estudante no CEUB e residente da Asa Norte. Atualmente focado no desenvolvimento de projetos práticos, imersivos e de impacto através de bootcamps de tecnologia.</p>
+            
+            <div class="cta-buttons">
+                <a href="https://wa.me/5561992003231" target="_blank" class="btn btn-primary">
+                    💬 Falar no WhatsApp
                 </a>
-
-                <a href="#"
-                   class="btn-action btn-outline">
-                    Copiar E-mail
+                <a href="mailto:neveslucca55@gmail.com" class="btn btn-secondary">
+                    ✉️ Enviar E-mail
                 </a>
-
             </div>
-
         </section>
 
-        <section class="connect-grid">
-
-            <a href="https://github.com/mateusmsd/sistematiza-o-intermedi-ria/tree/main"
-               target="_blank"
-               class="connect-box">
-
-                <div class="box-header">
-                    <span class="box-category">
-                        REPOSITÓRIO DO PROJETO
-                    </span>
-
-                    <span class="arrow-diagonal">
-                        ↗️
-                    </span>
-                </div>
-
-                <h2>
-                    Sistematização Intermediária
-                </h2>
-
-                <p>
-                    Veja direto no GitHub os códigos, a documentação e toda a evolução prática deste trabalho de bootcamp.
-                </p>
-
+        <section class="links-grid">
+            
+            <a href="https://github.com/neveslucca55-collab" target="_blank" class="card grid-card folder-card">
+                <div class="card-icon folder-icon">📂</div>
+                <h3>Projetos Acadêmicos & Sociais</h3>
+                <p>Acesse o meu hub principal onde organizo códigos de extensão universitária, trabalhos de bootcamp e iniciativas de impacto social.</p>
+                <span class="card-action text-cyan">Abrir Pasta de Projetos ↗</span>
             </a>
 
-            <a href="https://www.linkedin.com/in/mateus-melo-19011a402/"
-               target="_blank"
-               class="connect-box">
-
-                <div class="box-header">
-
-                    <span class="box-category">
-                        NETWORKING
-                    </span>
-
-                    <span class="arrow-diagonal">
-                        ↗️
-                    </span>
-
-                </div>
-
-                <h2>
-                    LinkedIn Profile
-                </h2>
-
-                <p>
-                    Histórico de aprendizado, conexões acadêmicas e ecossistema de TI.
-                </p>
-
+            <a href="https://github.com/neveslucca55-collab" target="_blank" class="card grid-card">
+                <div class="card-icon">📁</div>
+                <h3>Repositório GitHub</h3>
+                <p>Veja os repositórios públicos, commits e códigos desenvolvidos em tempo real.</p>
+                <span class="card-action">Acessar Perfis →</span>
             </a>
 
-            <a href="https://docs.google.com/document/d/12_43P_JwOdmo-8RosGW2ZZAVK0cgYjtVzqcW3OHQ72o/edit?tab=t.0#heading=h.1mq4hb1ghoq3"
-               target="_blank"
-               class="connect-box">
-
-                <div class="box-header">
-
-                    <span class="box-category">
-                        DOCUMENTAÇÃO
-                    </span>
-
-                    <span class="arrow-diagonal">
-                        ↗️
-                    </span>
-
-                </div>
-
-                <h2>
-                    Documentação do Projeto
-                </h2>
-
-                <p>
-                    Acesse a documentação completa, estrutura do projeto, requisitos e detalhes técnicos desenvolvidos durante o bootcamp.
-                </p>
-
+            <a href="https://www.linkedin.com/in/lucca-magalhaes-40aba43aa/" target="_blank" class="card grid-card">
+                <div class="card-icon">💼</div>
+                <h3>Perfil Profissional</h3>
+                <p>Conecte-se comigo no LinkedIn para parcerias, networking e atualizações de carreira.</p>
+                <span class="card-action">Ver Conexões →</span>
             </a>
 
         </section>
-
     </main>
 
-    <script>
-
-        document.addEventListener('DOMContentLoaded', () => {
-
-            const btnEmail = document.querySelector('.btn-outline');
-            const emailValue = 'mateus05msd@gmail.com';
-
-            if (btnEmail) {
-
-                btnEmail.addEventListener('click', (e) => {
-
-                    e.preventDefault();
-
-                    navigator.clipboard.writeText(emailValue).then(() => {
-
-                        const originalText = btnEmail.textContent;
-
-                        btnEmail.textContent = '✓ Copiado!';
-                        btnEmail.style.borderColor = '#00e5ff';
-                        btnEmail.style.color = '#00e5ff';
-
-                        setTimeout(() => {
-
-                            btnEmail.textContent = originalText;
-                            btnEmail.style.borderColor = 'rgba(255, 255, 255, 0.06)';
-                            btnEmail.style.color = '#ffffff';
-
-                        }, 2000);
-
-                    }).catch(err => {
-                        console.error('Erro ao copiar e-mail:', err);
-                    });
-
-                });
-
-            }
-
-        });
-
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
 <!-- deploy fix -->
