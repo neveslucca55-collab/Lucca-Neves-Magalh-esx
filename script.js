@@ -1,46 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.grid-card');
 
-    const btnEmail = document.querySelector('.btn-outline');
-
-    const emailValue = 'mateus05msd@gmail.com';
-
-    if (btnEmail) {
-
-        btnEmail.addEventListener('click', (e) => {
-
-            e.preventDefault();
-
-            navigator.clipboard.writeText(emailValue)
-                .then(() => {
-
-                    const originalText = btnEmail.textContent;
-
-                    btnEmail.textContent = '✓ Copiado!';
-
-                    btnEmail.style.borderColor = '#00e5ff';
-                    btnEmail.style.color = '#00e5ff';
-
-                    setTimeout(() => {
-
-                        btnEmail.textContent = originalText;
-
-                        btnEmail.style.borderColor =
-                            'rgba(255, 255, 255, 0.06)';
-
-                        btnEmail.style.color = '#ffffff';
-
-                    }, 2000);
-
-                })
-
-                .catch(err => {
-
-                    console.error('Erro ao copiar e-mail:', err);
-
-                });
-
+    // Efeito dinâmico nos cards ao passar o mouse (Feedback visual imediato)
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            // Se for o card especial de pasta, ele brilha em ciano, senão em roxo neon
+            if (card.classList.contains('folder-card')) {
+                card.style.borderColor = '#06b6d4';
+            } else {
+                card.style.borderColor = '#7c3aed';
+            }
         });
 
-    }
-
+        card.addEventListener('mouseleave', () => {
+            if (card.classList.contains('folder-card')) {
+                card.style.borderColor = 'rgba(124, 58, 237, 0.3)';
+            } else {
+                card.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+            }
+        });
+    });
 });
